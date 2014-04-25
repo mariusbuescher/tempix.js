@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tempix templating cache</title>
+  </head>
+  <body>
+
+    <div id="template-area">
+
+    </div>
+
+    <div>
+      <a href="template-1" >Load Template 1</a>
+      <a href="template-2" >Load Template 2</a>
+      <a href="both" >Load both templates</a>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/src/tempix.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function () {
+        var tempixInstance = new Tempix();
+
+        tempixInstance.templates = {
+          'template-1' : {
+            'name' : 'template-1',
+            'url' : 'templates/template-1.html',
+          },
+          'template-2' : {
+            'name' : 'template-2',
+            'url' : 'templates/template-2.html',
+          }
+        };
+
+        $('a').click(function (e) {
+          e.preventDefault();
+
+          if ($(this).attr('href') == 'both') {
+            var templates = tempixInstance.get('template-1', 'template-2');
+
+            $('#template-area').html('');
+
+            $.each(templates, function (key, template) {
+              $('#template-area').append(template.source);
+            });
+          } else {
+            var template = tempixInstance.get($(this).attr('href'));
+            $('#template-area').html(template.source);
+          }
+        })
+
+      });
+    </script>
+
+  </body>
+</html>
