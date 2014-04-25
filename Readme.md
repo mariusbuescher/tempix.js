@@ -30,3 +30,7 @@ Include tempix.js source, create a new Tempix object, set the templates and you 
         };
       });
     </script>
+
+## Acknowledgment
+
+The tempy.js project inspired me to do this little helper because I needed something similar for a project but without php code in it to use it in non php environments. basket.js seemed too big for this task.
