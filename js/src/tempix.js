@@ -11,18 +11,12 @@
   };
 
   window.Tempix.prototype.downloadTemplate = function (template) {
-    var self = this;
-    $.ajax({
-      url: template.url,
-      context: document.body,
-      async:false,
-      type:"GET",
-      success:function(response) {
-        template.source = response;
-        self.saveTemplate(template);
-      }
-    });
-
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', template.url, false);
+    xhr.send();
+    var response = xhr.responseText;
+    template.source = response;
+    this.saveTemplate(template);
   };
 
   window.Tempix.prototype.saveTemplate = function (template) {
