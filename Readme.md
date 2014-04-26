@@ -6,7 +6,9 @@ The livetime of the templates is ignored if the appcache is updated wich means i
 
 ## Dependencies
 
-tempix.js only depends on jQuery which is used for ajax requests.
+~~tempix.js only depends on jQuery which is used for ajax requests.~~
+
+There are no dependecies for tempix.js.
 
 ## Usage
 
